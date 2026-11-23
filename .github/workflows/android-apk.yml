@@ -21,8 +21,8 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - name: Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Check preinstalled Android SDK
+        run: test -d "$ANDROID_HOME" && echo "Android SDK available at $ANDROID_HOME"
       - name: Generate compatible Expo project
         run: |
           npx --yes create-expo-app@latest build-app --template blank --yes
